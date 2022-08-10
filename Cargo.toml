@@ -21,6 +21,7 @@ targets = ["x86_64-unknown-linux-gnu"]
 members = [
     "bench",
     "tests/no-std",
+    "./builtin-hack",
 ]
 
 [features]
@@ -59,6 +60,7 @@ std = []
 # Note:
 # - The MSRV when this feature enables depends on the MSRV of serde.
 serde = { version = "1.0.103", optional = true, default-features = false }
+builtin-hack = { path = "./builtin-hack" }
 
 [dev-dependencies]
 crossbeam-utils = "0.8"
