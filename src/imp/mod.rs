@@ -73,6 +73,22 @@ pub(crate) mod msp430;
 #[cfg(any(target_arch = "riscv32", target_arch = "riscv64"))]
 mod riscv;
 
+// test only
+#[cfg(test)]
+#[cfg(portable_atomic_new_atomic_intrinsics)]
+#[cfg(any(
+    target_arch = "aarch64",
+    all(
+        target_arch = "powerpc64",
+        any(
+            target_feature = "quadword-atomics",
+            portable_atomic_target_feature = "quadword-atomics"
+        )
+    ),
+))]
+#[path = "atomic128/intrinsics.rs"]
+mod intrinsics;
+
 // -----------------------------------------------------------------------------
 // Lock-based fallback implementations
 
